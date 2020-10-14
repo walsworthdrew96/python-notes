@@ -1,28 +1,53 @@
 import pyautogui as pya
 import time
 
+# variables
 pya.FAILSAFE = False
 p = (1667, 1011)
-u = (1789, 1011)
+right_monitor = None
 
-rightMonitor = None
-while rightMonitor != True and rightMonitor != False:
-    rightMonitor = bool(input('Enter "True" or "False":'))
-    if rightMonitor != True and rightMonitor != False:
+
+# functions
+def display_position(interval: int = 1):
+    while True:
+        print(pya.position())
+        time.sleep(interval)
+
+
+def display_countdown(seconds: int, interval: int = 1):
+    for i in range(seconds, 0, -1):
+        print(i)
+        time.sleep(interval)
+
+
+def click_bonus_button(x: int, y: int, interval: int = 30):
+    while True:
+        last_position = pya.position()
+        pya.click(x, y)
+        print('Clicked the bonus button!')
+        pya.moveTo(last_position.x, last_position.y)
+        print(f'Moved back to {last_position}')
+        display_countdown(interval)
+
+
+# main program
+while right_monitor != 'true' and right_monitor != 'false':
+    right_monitor = input(
+        'Enter "True" to click on the right monitor or "False" to click on the left monitor: ').lower()
+    if right_monitor != 'true' and right_monitor != 'false':
         print('Monitor toggle not set, try again.')
+    else:
+        if right_monitor == 'true':
+            right_monitor = True
+            print('Right monitor selected.')
+        else:
+            right_monitor = False
+            print('Left monitor selected.')
+        break
 
-# while True:
-#     print(pya.position())
-#     time.sleep(1)
+display_countdown(5)
 
-time.sleep(5)
-if rightMonitor:
-    while True:
-        pya.click(p[0], p[1])
-        pya.click(u[0], u[1])
-        time.sleep(30)
+if right_monitor:
+    click_bonus_button(p[0], p[1])
 else:
-    while True:
-        pya.click(p[0] - 1920, p[1])
-        pya.click(u[0] - 1920, u[1])
-        time.sleep(30)
+    click_bonus_button(p[0] - 1920, p[1])
