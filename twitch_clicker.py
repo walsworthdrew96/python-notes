@@ -1,5 +1,7 @@
 import pyautogui as pya
 import time
+import os
+import sys
 
 # variables
 pya.FAILSAFE = False
@@ -14,10 +16,15 @@ def display_position(interval: int = 1):
         time.sleep(interval)
 
 
+def clear_console():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+
 def display_countdown(seconds: int, interval: int = 1):
     for i in range(seconds, 0, -1):
-        print(i)
+        print(f'Countdown: {str(i).rjust(2, " ")}', end='')
         time.sleep(interval)
+        print('', end='\r')
 
 
 def click_bonus_button(x: int, y: int, interval: int = 30):
@@ -28,6 +35,7 @@ def click_bonus_button(x: int, y: int, interval: int = 30):
         pya.moveTo(last_position.x, last_position.y)
         print(f'Moved back to {last_position}')
         display_countdown(interval)
+        clear_console()
 
 
 # main program
