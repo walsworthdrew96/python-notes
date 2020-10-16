@@ -1,13 +1,30 @@
 X = 11
 
 
-def f():
-    print(X)
+# def f():
+#     global X
+#     nonlocal X
+#     X = 57
+#     print('print in f():', X)
+
+
+def h():
+    X = 87
+    print('print in h() before f():', X)
+
+    def f():
+        # global X
+        nonlocal X
+        X = 57
+        print('print in f():', X)
+    f()
+
+    print('print in h() after f():', X)
 
 
 def g():
     X = 22
-    print(X)
+    print('print in g():', X)
 
 
 class C:
@@ -19,10 +36,11 @@ class C:
 
 
 if __name__ == '__main__':
-    print(X)
-    f()
+    print('print in main():', X)
+    # f()
     g()
-    print(X)
+    h()
+    print('print in main() after f() and g():', X)
 
     obj = C()
     obj2 = C()
