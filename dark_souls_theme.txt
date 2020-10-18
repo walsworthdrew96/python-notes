@@ -1,0 +1,4 @@
+B C G G B C A E G | B C D G B C A E G | B C G G B C A E G | B C D G B C A E G
+B C G G B C A E G | B C D G B C A E G | B C G G B C A E G | B C D G B C A E G
+B C G G B C A E G | B C D G B C A E G | B C G G B C A E G | C D E G C D A F G
+C D G G C D A F G | C D E G C D A F G | C D G G C D A F G | C D E G C D A E G

@@ -56,6 +56,6 @@ while right_monitor != 'true' and right_monitor != 'false':
 display_countdown(5)
 
 if right_monitor:
-    click_bonus_button(p[0], p[1], 15)
+    click_bonus_button(p[0], p[1], 300)
 else:
-    click_bonus_button(p[0] - 1920, p[1], 15)
+    click_bonus_button(p[0] - 1920, p[1], 300)
