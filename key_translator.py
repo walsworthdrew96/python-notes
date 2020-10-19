@@ -20,6 +20,10 @@ for line in rf:
             wf.write('A')
         elif char == 'D':
             wf.write('B')
+        elif char == '3':
+            wf.write('1')
+        elif char == '4':
+            wf.write('2')
         else:
             wf.write(char)
 rf.close()
